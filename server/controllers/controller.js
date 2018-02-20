@@ -24,7 +24,7 @@ module.exports = {
     const newUser = new User(req.body);
     newUser.save((err, user) => {
       if (err) {
-        return res.json(err);
+        return res.status(422).json(err);
       } else if (!err) {
         return res.send('User is registered');
       }

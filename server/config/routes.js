@@ -21,11 +21,9 @@ router.get('/users', (req, res, next) => {
   ]);
 });
 
-// Create new users
-router.post('/users', controller.register);
-
-
-/* GET images listing. */
+// Foodsnap
+router.post('/create-user', controller.register);
+router.post('/login', controller.login);
 router.get('/images', controller.getImages);
 
 module.exports = router;
