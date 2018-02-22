@@ -1,16 +1,16 @@
 const express = require('express');
 
-const controller = require('.././controllers/controller');
+const { register, login, getImages } = require('.././controllers/controller');
 
 const router = express.Router();
 
 /* GET default. */
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
   res.send('Welcome to the Foodsnap API');
 });
 
 /* GET users listing. */
-router.get('/users', (req, res, next) => {
+router.get('/users', (req, res) => {
   res.json([{
     id: 1,
     username: 'samsepi0l',
@@ -22,8 +22,8 @@ router.get('/users', (req, res, next) => {
 });
 
 // Foodsnap
-router.post('/create-user', controller.register);
-router.post('/login', controller.login);
-router.get('/images', controller.getImages);
+router.post('/register', register);
+router.post('/login', login);
+router.get('/images', getImages);
 
 module.exports = router;

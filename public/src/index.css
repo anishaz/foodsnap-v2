@@ -1,4 +1,9 @@
 body {
+  background: #231f20;
+  background: white;
+  color: white;
+  color: #333;
+  padding: 50px 20px;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
