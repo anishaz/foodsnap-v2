@@ -1,5 +1,7 @@
 const express = require('express');
 
+const app = express();
+
 const { register, login, getImages } = require('.././controllers/controller');
 
 const router = express.Router();
@@ -20,6 +22,13 @@ router.get('/users', (req, res) => {
   },
   ]);
 });
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 
 // Foodsnap
 router.post('/register', register);

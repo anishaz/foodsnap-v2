@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-/* eslint-disable react/prefer-stateless-function */
 class Login extends Component {
   constructor() {
     super();
@@ -20,8 +19,8 @@ class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
-    axios.post('/', { email, password }).then((result) => {
-      console.log(result);
+    axios.post('http://localhost:3001/login', { email: email, password: password }).then(function(response){
+      console.log(`${JSON.stringify(response)} sent correctly`);
     })
   }
 
@@ -29,10 +28,8 @@ class Login extends Component {
     return (
       <div className="login">
         <form action="/" className="login__form" onSubmit={this.onSubmit}>
-          <label htmlFor="username">Username</label>
-          <input type="text" placeholder="username" onChange={this.onChange} />
-          <label htmlFor="password">Password</label>
-          <input type="text" placeholder="password" onChange={this.onChange} />
+          <input type="text" placeholder="email" name="email" onChange={this.onChange} />
+          <input type="text" placeholder="password" name="password" onChange={this.onChange} />
           <button>Submit</button>
         </form>
       </div>
