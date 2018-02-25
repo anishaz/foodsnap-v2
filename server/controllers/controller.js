@@ -8,12 +8,12 @@ module.exports = {
   login: (req, res, next) => {
     User.findOne({ email: req.body.email }, (err, user) => {
       // to be added back with browser integration
-      // req.session.user = user;
+      req.session.user = user;
       const { email, password } = req.body;
       if (err) {
         return (err);
-      } else if (user == null) {
-        return res.status(404).send('Incorrect credentials or user not found');
+      } else if (user == null || password !== user.password) {
+        return res.status(401).send('Incorrect credentials or user not found');
       } else if (email === user.email && password === user.password) {
         return res.status(200).send('Successful login');
       }

@@ -16,6 +16,22 @@ require('./config/mongoose');
 
 const routes = require('./config/routes');
 
+const session = require('express-session');
+
+const sessionConfig = {
+  secret: 'themostsecuresecretkeyever', // Secret name for decoding secret and such
+  resave: false, // Don't resave session if no changes were made
+  saveUninitialized: true, // Don't save session if there was nothing initialized
+  name: 'foodSnapper', // Sets a custom cookie name
+  cookie: {
+    secure: false, // This need to be true, but only on HTTPS
+    httpOnly: false, // Forces cookies to only be used over http
+    maxAge: 3600000,
+  },
+};
+app.use(session(sessionConfig));
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
