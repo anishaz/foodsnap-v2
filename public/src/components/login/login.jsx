@@ -19,17 +19,15 @@ class Login extends Component {
     this.setState(state);
   }
 
-  onSubmit = (e) => {
+  async onSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
-    axios.post('http://localhost:3001/login', 
-      { email: email, password: password })
-      .then(function(response){
-        console.log(`${JSON.stringify(response)}`);
-      })
-      .catch(function(err){
-        console.log(`${JSON.stringify(err)}`);
-      })
+    try {
+      let response = await axios.post('http://localhost:3001/login', {email: email, password: password})
+      console.log(`${JSON.stringify(response)} sent correctly`);
+    } catch (error) {
+      console.error(error + "Error sending login data");
+    }
   }
 
   render() {
