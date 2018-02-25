@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Button from '../button/button';
+import * as Cookies from "js-cookie";
 
 class Login extends Component {
   constructor() {
@@ -25,9 +26,13 @@ class Login extends Component {
     e.preventDefault();
     const { email, password } = this.state;
     try {
-      let response = await axios.post('http://localhost:3001/login', {email: email, password: password})
-      this.props.loggedIn();
-    } catch (error) {
+      let response = await axios.post('http://localhost:3001/login', {email: email, password: password});
+      if (response) {
+        this.props.loggedIn();
+        Cookies.set('username', email);
+      }
+    } 
+    catch (error) {
       const errorRes = JSON.stringify(error.response.data);
       self.setState({ errors: errorRes });
     }

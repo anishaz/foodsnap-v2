@@ -21,7 +21,6 @@ class App extends Component {
     }
 
     loggedIn() {
-        let { loggedIn } = this.state
         this.setState({
             loggedIn: true
         })
@@ -30,7 +29,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Login loggedIn={ this.loggedIn } />
+                <Login loggedIn={ this.loggedIn.bind(this) } />
             </div>
             
         );
