@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Button from '../button/button';
 
 class Login extends Component {
   constructor() {
     super();
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       email: '',
       password: ''
@@ -29,8 +32,8 @@ class Login extends Component {
       <div className="login">
         <form action="/" className="login__form" onSubmit={this.onSubmit}>
           <input type="text" placeholder="email" name="email" onChange={this.onChange} />
-          <input type="text" placeholder="password" name="password" onChange={this.onChange} />
-          <button>Submit</button>
+          <input type="text" placeholder="password" name="password" />
+          <Button text="Log in" />
         </form>
       </div>
     );
