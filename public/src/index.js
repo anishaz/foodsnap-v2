@@ -4,7 +4,15 @@ import './index.css';
 import Login from './components/login/login';
 
 class App extends Component {
-    state = { users: [] }
+    constructor() {
+    super();
+    this.loggedIn = this.loggedIn.bind(this);
+    }
+
+    state = {
+        users: [],
+        loggedIn: false
+    }
 
     componentDidMount() {
         fetch('/users')
@@ -12,10 +20,17 @@ class App extends Component {
             .then(users => this.setState({ users }));
     }
 
+    loggedIn() {
+        let { loggedIn } = this.state
+        this.setState({
+            loggedIn: true
+        })
+    }
+
     render() {
         return (
             <div className="App">
-                <Login />
+                <Login loggedIn={ this.loggedIn } />
             </div>
             
         );

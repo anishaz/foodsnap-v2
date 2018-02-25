@@ -10,7 +10,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      errors: []
+      errors: [],
     };
   }
 
@@ -26,7 +26,7 @@ class Login extends Component {
     const { email, password } = this.state;
     try {
       let response = await axios.post('http://localhost:3001/login', {email: email, password: password})
-      console.log(`${JSON.stringify(response)} sent correctly`);
+      this.props.loggedIn();
     } catch (error) {
       const errorRes = JSON.stringify(error.response.data);
       self.setState({ errors: errorRes });
@@ -36,7 +36,7 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
-        <form action="/" className="login__form" onSubmit={this.onSubmit}>
+        <form action="/" className="login__form" onSubmit={this.onSubmit} >
           <input type="email" placeholder="email" name="email" onChange={this.onChange} required />
           <input type="password" placeholder="password" name="password" onChange={this.onChange} required />
           <Button text="Log in" />
