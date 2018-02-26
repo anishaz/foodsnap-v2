@@ -40,7 +40,7 @@ class Logout extends Component {
         return (
             <div className="logout">
                 <form action="/" className="logout__form" onSubmit={this.onSubmit} >
-                    <Button text="Logout" />
+                    <Button text="Logout" type="submit" />
                 </form>
             </div>
         );
