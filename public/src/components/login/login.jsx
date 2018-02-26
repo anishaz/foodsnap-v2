@@ -47,7 +47,7 @@ class Login extends Component {
         <form action="/" className="login__form" onSubmit={this.onSubmit} >
           <Input floatingLabelText="email" name="email" onChange={ this.onChange } />
           <Input
-            floatingLabelText="Password" name="password" onChange={this.onChange} />
+            floatingLabelText="Password" name="password" type="password" onChange={this.onChange} />
           <Button text="Log in" type="submit"/>
         </form>
       </div>
