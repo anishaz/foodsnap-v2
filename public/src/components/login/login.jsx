@@ -44,7 +44,7 @@ class Login extends Component {
         <form action="/" className="login__form" onSubmit={this.onSubmit} >
           <input type="email" placeholder="email" name="email" onChange={this.onChange} required />
           <input type="password" placeholder="password" name="password" onChange={this.onChange} required />
-          <Button text="Log in" />
+          <Button text="Log in" type="submit"/>
         </form>
       </div>
     );
