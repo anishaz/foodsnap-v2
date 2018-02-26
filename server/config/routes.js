@@ -2,7 +2,9 @@ const express = require('express');
 
 const app = express();
 
-const { register, login, getImages } = require('.././controllers/controller');
+const {
+  register, login, logout, getImages,
+} = require('.././controllers/controller');
 
 const router = express.Router();
 
@@ -33,6 +35,7 @@ app.use((req, res, next) => {
 // Foodsnap
 router.post('/register', register);
 router.post('/login', login);
+router.post('/logout', logout);
 router.get('/images', getImages);
 
 module.exports = router;

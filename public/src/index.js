@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/login/login';
+import Logout from './components/logout/logout';
 
 class App extends Component {
     constructor() {
     super();
     this.loggedIn = this.loggedIn.bind(this);
+    this.loggedOut = this.loggedOut.bind(this);
     }
 
     state = {
@@ -26,13 +28,27 @@ class App extends Component {
         })
     }
 
+    loggedOut() {
+        this.setState({
+            loggedIn: false
+        })
+    }
+
     render() {
-        return (
-            <div className="App">
-                <Login loggedIn={ this.loggedIn.bind(this) } />
-            </div>
-            
-        );
+        if (this.state.loggedIn === false) {
+            return (
+                <div className="App">
+                    <Login loggedIn={ this.loggedIn.bind(this) } />
+                </div>
+            );
+        }
+        if (this.state.loggedIn === true) {
+            return (
+                <div className="App">
+                    <Logout loggedOut={ this.loggedOut.bind(this) } />
+                </div>
+            )
+        }
     }
 }
 
