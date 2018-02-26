@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import client from '../../client'; // this is importing axios instance from client.js
 import Button from '../button/button';
 import * as Cookies from "js-cookie";
 
@@ -26,7 +26,7 @@ class Login extends Component {
     e.preventDefault();
     const { email, password } = this.state;
     try {
-      let response = await axios.post('http://localhost:3001/login', {email: email, password: password});
+      let response = await client.post('/login', {email: email, password: password});
       if (response) {
         this.props.loggedIn();
         Cookies.set('username', email);

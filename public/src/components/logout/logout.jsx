@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import client from '../../client'; // this is importing axios instance from client.js
 import Button from '../button/button';
 
 class Logout extends Component {
@@ -25,7 +25,7 @@ class Logout extends Component {
         e.preventDefault();
         const { email, password } = this.state;
         try {
-            let response = await axios.post('http://localhost:3001/logout');
+            let response = await client.post('/logout');
             if (response) {
                 this.props.loggedOut();
             }
