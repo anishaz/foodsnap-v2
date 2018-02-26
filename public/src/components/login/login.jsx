@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import client from '../../client'; // this is importing axios instance from client.js
-import Button from '../button/button';
 import * as Cookies from "js-cookie";
+// Components
+import Button from '../button/button';
+import Input from '../input/input';
+
 
 class Login extends Component {
   constructor() {
@@ -42,8 +45,9 @@ class Login extends Component {
     return (
       <div className="login">
         <form action="/" className="login__form" onSubmit={this.onSubmit} >
-          <input type="email" placeholder="email" name="email" onChange={this.onChange} required />
-          <input type="password" placeholder="password" name="password" onChange={this.onChange} required />
+          <Input floatingLabelText="email" name="email" onChange={ this.onChange } />
+          <Input
+            floatingLabelText="Password" name="password" onChange={this.onChange} />
           <Button text="Log in" type="submit"/>
         </form>
       </div>
