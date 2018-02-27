@@ -7,17 +7,26 @@ const buttonStyles = {
 };
 
 const Button = props => (
-  <RaisedButton primary style={buttonStyles} type={props.type}>{ props.text }</RaisedButton>
+  <RaisedButton
+    primary
+    style={buttonStyles}
+    type={props.type}
+    onClick={props.onClick}
+  >
+    { props.text }
+  </RaisedButton>
 );
 
 Button.defaultProps = {
-  type: 'input',
+  type: '',
+  onClick: '',
 };
 
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   type: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 

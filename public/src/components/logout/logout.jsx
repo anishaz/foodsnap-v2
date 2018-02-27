@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../button/button';
 
 
-class Logout extends Component {
-  render() {
-    return (
-      <div className="logout">
-        <button onClick={this.props.logOut}>Logout</button>
-      </div>
-    );
-  }
-}
+const Logout = props => (
+  <Button onClick={props.logOut} text="Logout" type="submit" />
+);
+
+Logout.defaultProps = {
+  logOut: '',
+};
+
+
+Logout.propTypes = {
+  logOut: PropTypes.func,
+};
 
 export default Logout;
