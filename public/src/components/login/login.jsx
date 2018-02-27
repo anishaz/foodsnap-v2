@@ -4,6 +4,7 @@ import * as Cookies from "js-cookie";
 // Components
 import Button from '../button/button';
 import Input from '../input/input';
+import Error from '../error/error';
 
 
 class Login extends Component {
@@ -14,7 +15,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      errors: [],
+      errors: {},
     };
   }
 
@@ -42,8 +43,15 @@ class Login extends Component {
   }
 
   render() {
+    const hasErrors = this.state.errors;
+    let errorsComponent;
+
+    if (hasErrors.length > 1) {
+      errorsComponent = <Error errors={this.state.errors}/>;
+    }
     return (
       <div className="login">
+        { errorsComponent }
         <form action="/" className="login__form" onSubmit={this.onSubmit} >
           <Input floatingLabelText="email" name="email" onChange={ this.onChange } />
           <Input
