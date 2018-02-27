@@ -27,11 +27,12 @@ class Logout extends Component {
         try {
             let response = await client.post('/logout');
             if (response) {
-                this.props.loggedOut();
+                this.props.logOut();
             }
         }
         catch (error) {
             const errorRes = JSON.stringify(error.response.data);
+            console.log(JSON.stringify(error.response.data));
             self.setState({ errors: errorRes });
         }
     }

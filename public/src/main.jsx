@@ -6,8 +6,8 @@ import Logout from './components/logout/logout';
 class App extends Component {
     constructor() {
     super();
-    this.loggedIn = this.loggedIn.bind(this);
-    this.loggedOut = this.loggedOut.bind(this);
+    this.logIn = this.logIn.bind(this);
+    this.logOut = this.logOut.bind(this);
     }
 
     state = {
@@ -15,13 +15,13 @@ class App extends Component {
         loggedIn: false
     }
 
-    loggedIn() {
+    logIn() {
         this.setState({
             loggedIn: true
         })
     }
 
-    loggedOut() {
+    logOut() {
         this.setState({
             loggedIn: false
         })
@@ -31,14 +31,14 @@ class App extends Component {
         if (this.state.loggedIn === false) {
             return (
                 <div className="app">
-                    <Login loggedIn={ this.loggedIn.bind(this) } />
+                    <Login logIn={ this.logIn } />
                 </div>
             );
         }
         if (this.state.loggedIn === true) {
             return (
                 <div className="app">
-                    <Logout loggedOut={ this.loggedOut.bind(this) } />
+                    <Logout logOut={ this.logOut } />
                 </div>
             )
         }

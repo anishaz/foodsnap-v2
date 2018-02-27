@@ -31,7 +31,7 @@ class Login extends Component {
     try {
       let response = await client.post('/login', {email: email, password: password});
       if (response) {
-        this.props.loggedIn();
+        this.props.logIn();
         Cookies.set('username', email);
       }
     } 
