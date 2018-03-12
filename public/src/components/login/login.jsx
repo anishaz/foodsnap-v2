@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import client from '../../client'; // this is importing axios instance from client.js
-import * as Cookies from "js-cookie";
 // Components
 import Button from '../button/button';
 import Input from '../input/input';
@@ -33,7 +32,6 @@ class Login extends Component {
       let response = await client.post('/login', {email: email, password: password});
       if (response) {
         this.props.logIn();
-        Cookies.set('username', email);
       }
     } 
     catch (error) {
